@@ -1,0 +1,38 @@
+.info {
+  background-color: #A1DBF0;
+  padding: 10px 24px;
+  margin: 8px;
+  color: black;
+}
+
+.acc {
+  border-bottom: 1px solid #ddd;
+
+  background-color: #f7f7f9;
+  padding: 12px 24px;
+  margin: 8px;
+  color: black;
+}
+
+.acc >*{
+  margin: 4px;
+
+}
+
+.selected{
+  background-color: #45EE50;
+}
+
+.acc:first-child{
+  border-top: 1px solid #ddd;
+}
+
+.acc:hover{
+  background-color: #8CCE40;
+}
+
+form{
+  margin: 24px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}

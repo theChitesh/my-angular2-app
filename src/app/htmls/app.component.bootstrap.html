@@ -1,0 +1,64 @@
+<div class="container">
+
+<h1> Personal Finance </h1>
+
+<div>
+  <h2> Your accounts </h2>
+  <div class="row" *ngIf="!_accounts || _accounts.length == 0" >
+    <div class="alert alert-info">
+        <strong>No accounts yet?</strong>
+        Please add a account ...
+    </div>
+
+  </div>
+<div class="row">
+  <div class="acc col-md-12" *ngFor = "let acc  of _accounts , let i = index"
+    [ngClass]="{
+      selected: _selected[i],
+      otherCSSClass: otherProperty
+    }">
+      <h2 class="title"> {{acc.title}} ({{acc.id}})</h2>
+      <p>{{acc.description}} </p>
+      <p> Balance : <strong class="lead"> {{acc.balance}} </strong> </p>
+
+      <div class="row">
+        <div class="col-md-3">
+          <button class="btn btn-danger" (click) = "removeAcc(i)"> Delete </button>
+          <button class="btn btn-primary" (click) = "select(i)"> {{_selected[i] ? 'Deselect' : 'Select'}} </button>
+        </div>
+
+      </div>
+
+
+  </div>
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="row">
+  <form class="col-md-6" >
+    <h3>Add New Account</h3>
+    <div class="form group">
+      <label for="title">Title: </label>
+      <input class="form-control" id="title" type="text" name="title" value ="" #title>
+    </div>
+
+    <div class="form group">
+      <label for="desc">Description: </label>
+      <input class="form-control" id="desc" type="text" name="desc" value = "" #desc>
+    </div>
+
+    <div class="form group">
+      <label for="bal">Balance: </label>
+      <input class="form-control" id="bal" type="text" name="bal" value = "0" #bal>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-success" (click) = "createAcc(title,desc,bal)"> Create </button>
+    </div>
+  </form>
+</div>

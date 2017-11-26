@@ -3,13 +3,19 @@
 <div>
   <h2> Your accounts </h2>
 
-  <p *ngIf="!_accounts || _accounts.length == 0" > You don't have any accounts yet </p>
+  <div class="info" *ngIf="!_accounts || _accounts.length == 0" > You don't have any accounts yet
+  </div>
 
-  <div *ngFor = "let acc  of _accounts , let i = index">
-      <h3> {{acc.title}} ({{acc.id}})</h3>
+  <div class="acc" *ngFor = "let acc  of _accounts , let i = index"
+    [ngClass]="{
+      selected: _selected[i],
+      otherCSSClass: otherProperty
+    }">
+      <h2 class="title"> {{acc.title}} ({{acc.id}})</h2>
       <p>{{acc.description}} </p>
       <p> Balance : <strong> {{acc.balance}} </strong> </p>
-      <button (click) = "removeAcc(i)"> Delete </button>
+      <button style="color:red;" (click) = "removeAcc(i)"> Delete </button>
+      <button (click) = "select(i)"> {{_selected[i] ? 'Deselect' : 'Select'}} </button>
     <br>
     <br>
   </div>
