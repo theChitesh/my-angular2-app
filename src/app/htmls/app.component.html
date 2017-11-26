@@ -1,0 +1,41 @@
+<h1> Personal Finance </h1>
+
+<div>
+  <h2> Your accounts </h2>
+
+  <p *ngIf="!_accounts || _accounts.length == 0" > You don't have any accounts yet </p>
+
+  <div *ngFor = "let acc  of _accounts , let i = index">
+      <h3> {{acc.title}} ({{acc.id}})</h3>
+      <p>{{acc.description}} </p>
+      <p> Balance : <strong> {{acc.balance}} </strong> </p>
+      <button (click) = "removeAcc(i)"> Delete </button>
+    <br>
+    <br>
+  </div>
+
+</div>
+
+
+
+<div>
+  <div>
+      <label for="title">Title: </label>
+      <input id="title" type="text" name="title" value = "" #title> </input>
+  </div>
+
+  <div>
+    <label for="desc">Description: </label>
+    <input id="desc" type="text" name="desc" value = "" #desc> </input>
+  </div>
+
+  <div>
+    <label for="bal">Balance: </label>
+    <input id="bal" type="text" name="bal" value = "0" #bal> </input>
+  </div>
+
+  <div>
+    <button (click) = "createAcc(title,desc,bal)"> Create </button>
+  </div>
+
+</div>
